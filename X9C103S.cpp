@@ -4,19 +4,6 @@
 //************************************************************************************
 // Funções Públicas
 
-// Método construtor
-X9C103S::X9C103S(uint8_t incPin, uint8_t udPin, uint8_t csPin) {
-    _incPin = incPin;
-    _udPin = udPin;
-    _csPin = csPin;
-    _currentValue = X9C103S_UNKNOWN;
-
-    pinMode(_incPin, OUTPUT);
-    pinMode(_udPin, OUTPUT);
-    pinMode(_csPin, OUTPUT);
-    digitalWrite(_csPin, HIGH);
-}
-
 // Alterar a resistência
 void X9C103S::Change(uint8_t direction, uint8_t amount) {
     amount = constrain(amount, 0, X9C103S_MAX_AMOUNT);
@@ -69,4 +56,17 @@ void X9C103S::Set(uint8_t value) {
     } else if (_currentValue < value) {
         Change(X9C103S_UP, value-_currentValue);
     }
+}
+
+// Define automaticamente os pinos do módulo como IN/OUT
+void X9C103S::SetPins(uint8_t incPin, uint8_t udPin, uint8_t csPin) {
+    _incPin = incPin;
+    _udPin  = udPin;
+    _csPin  = csPin;
+    _currentValue = X9C103S_UNKNOWN;
+
+    pinMode(_incPin, OUTPUT);
+    pinMode(_udPin,  OUTPUT);
+    pinMode(_csPin,  OUTPUT);
+    digitalWrite(_csPin, HIGH);
 }

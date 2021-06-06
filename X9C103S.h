@@ -12,9 +12,6 @@
 // Classe Principal
 class X9C103S {
     public:
-        // Método construtor
-        X9C103S(uint8_t incPin, uint8_t udPin, uint8_t csPin);      
-    
         // Funções
         void Change(uint8_t direction, uint8_t amount);             // Alterar a resistência
         void Decrease(uint8_t amount);                              // Decremento da resistência
@@ -22,6 +19,7 @@ class X9C103S {
         void Increase(uint8_t amount);                              // Incremento da resistência
         void Reset();                                               // Reseta a resistência
         void Set(uint8_t value);                                    // Definir a resistência
+        void SetPins(uint8_t incPin, uint8_t udPin, uint8_t csPin); // Define automaticamente os pinos do módulo como IN/OUT
 
     private:
         // Pinos do módulo X9C103S
