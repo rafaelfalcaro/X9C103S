@@ -59,7 +59,7 @@ void X9C103S::Set(uint8_t value) {
 }
 
 // Define automaticamente os pinos do módulo como IN/OUT
-void X9C103S::SetPins(uint8_t incPin, uint8_t udPin, uint8_t csPin) {
+void X9C103S::SetPins(uint8_t csPin, uint8_t incPin, uint8_t udPin) {
     _incPin = incPin;
     _udPin  = udPin;
     _csPin  = csPin;
@@ -69,4 +69,6 @@ void X9C103S::SetPins(uint8_t incPin, uint8_t udPin, uint8_t csPin) {
     pinMode(_udPin,  OUTPUT);
     pinMode(_csPin,  OUTPUT);
     digitalWrite(_csPin, HIGH);
+
+    Reset();
 }
